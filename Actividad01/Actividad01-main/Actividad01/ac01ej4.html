@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ac01ej4</title>
+</head>
+<body>
+    <h1>Análisis de una frase</h1>
+    <label for="frase-input">Ingresa una frase:</label>
+    <input type="text" id="frase-input">
+    <button onclick="analizarFrase()">Analizar</button>
+    <div id="resultado"></div>
+
+    <script>
+        function analizarFrase() {
+            var fraseInput = document.getElementById('frase-input');
+            var resultadoDiv = document.getElementById('resultado');
+
+            var frase = fraseInput.value.toLowerCase();
+            var contadorO = 0;
+            var contadorVocales = 0;
+            var contadorA = 0, contadorE = 0, contadorI = 0, contadorU = 0;
+
+            for (var i = 0; i < frase.length; i++) {
+                var letra = frase[i];
+
+                if (letra === 'o') {
+                    contadorO++;
+                }
+
+                if ('aeiu'.includes(letra)) {
+                    contadorVocales++;
+
+                    switch (letra) {
+                        case 'a':
+                            contadorA++;
+                            break;
+                        case 'e':
+                            contadorE++;
+                            break;
+                        case 'i':
+                            contadorI++;
+                            break;
+                        case 'u':
+                            contadorU++;
+                            break;
+                    }
+                }
+            }
+
+            var resultadoHTML = 'Cantidad de veces que aparece la letra "o": ' + contadorO + '<br>';
+            resultadoHTML += 'Vocales que aparecen: a, e, i, o, u<br>';
+            resultadoHTML += 'Cantidad de veces que aparece la vocal "a": ' + contadorA + '<br>';
+            resultadoHTML += 'Cantidad de veces que aparece la vocal "e": ' + contadorE + '<br>';
+            resultadoHTML += 'Cantidad de veces que aparece la vocal "i": ' + contadorI + '<br>';
+            resultadoHTML += 'Cantidad de veces que aparece la vocal "o": ' + contadorO + '<br>';
+            resultadoHTML += 'Cantidad de veces que aparece la vocal "u": ' + contadorU;
+
+            resultadoDiv.innerHTML = resultadoHTML;
+        }
+    </script>
+</body>
+</html>

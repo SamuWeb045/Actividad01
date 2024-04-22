@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ac01ej5</title>
+</head>
+<body>
+    <h1>Combinación de Nombres y Apellidos</h1>
+    <div id="resultado"></div>
+
+    <script>
+        // Array de nombres
+        var nombres = ["Juan", "María", "Pedro", "Laura", "Carlos"];
+        // Array de apellidos
+        var apellidos = ["Gómez", "Pérez", "Sánchez", "Rodríguez", "González"];
+
+        // Función para generar un número aleatorio entre min (incluido) y max (excluido)
+        function generarNumeroAleatorio(min, max) {
+          return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        // Función para formatear un nombre o apellido
+        function formatearNombreApellido(nombreApellido) {
+          // Convertir el primer carácter en mayúscula y el resto en minúsculas
+          return nombreApellido.charAt(0).toUpperCase() + nombreApellido.substring(1).toLowerCase();
+        }
+
+        // Nuevo array combinado de forma aleatoria
+        var combinado = [];
+
+        // Generar combinaciones de nombres y apellidos
+        for (var i = 0; i < nombres.length; i++) {
+          var nombre = nombres[generarNumeroAleatorio(0, nombres.length)];
+          var apellido = apellidos[generarNumeroAleatorio(0, apellidos.length)];
+
+          // Formatear el nombre y el apellido
+          var nombreFormateado = formatearNombreApellido(nombre);
+          var apellidoFormateado = formatearNombreApellido(apellido);
+
+          // Agregar la combinación al array
+          combinado.push(nombreFormateado + " " + apellidoFormateado);
+        }
+
+        // Mostrar resultados en el DOM
+        window.addEventListener('DOMContentLoaded', function() {
+          // Obtener el elemento <div> con id "resultado"
+          var resultadoDiv = document.getElementById('resultado');
+
+          // Generar el contenido HTML con las combinaciones de nombres y apellidos
+          var contenidoHTML = combinado.join("<br>");
+
+          // Asignar el contenido HTML al elemento <div>
+          resultadoDiv.innerHTML = contenidoHTML;
+        });
+    </script>
+</body>
+</html>
